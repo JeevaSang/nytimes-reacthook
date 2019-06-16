@@ -1,5 +1,4 @@
 import React from "react";
-import classNames from "classnames";
 import Typography from "@material-ui/core/Typography";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
@@ -7,15 +6,15 @@ import GridListTileBar from "@material-ui/core/GridListTileBar";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   root: {
     height: "100%",
     padding: 20,
     justifyContent: "space-around"
   },
   gridList: {
-    width: 900,
-    height: 380,
+   // width: 900,
+    //height: 380,
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: "translateZ(0)"
   },
@@ -24,16 +23,13 @@ const useStyles = makeStyles(theme => ({
       "linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, " +
       "rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)"
   }
-}));
+});
 
 export default function Story(props) {
   const classes = useStyles(props);
-  const { className: clazz, style } = props;
-  const className = classNames(classes.root, clazz);
-
   const { story, onBack } = props;
   return (
-    <div {...{ className, style }}>
+    <div className={classes.root}>
       <Typography
         component="h3"
         variant="h4"
@@ -77,7 +73,7 @@ export default function Story(props) {
         ))}
       </GridList>
       <Typography align="center">
-        <Button
+        <Button color="primary"
           variant="contained"
           component="span"
           onClick={() => onBack(null)}

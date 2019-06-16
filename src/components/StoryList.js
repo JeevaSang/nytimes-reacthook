@@ -1,5 +1,4 @@
 import React from "react";
-import classNames from "classnames";
 import Avatar from "@material-ui/core/Avatar";
 import Paper from "@material-ui/core/Paper";
 import AppBar from "@material-ui/core/AppBar";
@@ -21,7 +20,7 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   avatar: {
     margin: 10
   },
@@ -44,16 +43,13 @@ const useStyles = makeStyles(theme => ({
     paddingTop: 10,
     paddingBottom: 10
   }
-}));
+});
 
 export default function StoryList(props) {
   const classes = useStyles(props);
-  const { className: clazz, style } = props;
-  const className = classNames(classes.root, clazz);
-
   const { stories, onStory } = props;
   return (
-    <div {...{ className, style }}>
+    <div className={classes.root}>
       <Paper square className={classes.paper}>
         <AppBar position="static">
           <Toolbar>
